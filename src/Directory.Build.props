@@ -1,0 +1,51 @@
+<Project>
+  <PropertyGroup>
+    <Company></Company>
+    <Authors>Florian Grimm</Authors>
+    <Copyright>Copyright © 2020</Copyright>
+    <RootDirectory>$(MSBuildThisFileDirectory)..\</RootDirectory>
+    <BaseIntermediateOutputPath>$(RootDirectory)output\$(MSBuildProjectName)\obj\$(PlatformName)</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(RootDirectory)output\$(MSBuildProjectName)\bin\$(PlatformName)</BaseOutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Product>BaGet</Product>
+
+    <PackageVersion Condition="'$(PackageVersion)' == ''">0.1.0-prerelease</PackageVersion>
+    <PackageProjectUrl>https://loic-sharma.github.io/BaGet/</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIconUrl>https://raw.githubusercontent.com/NuGet/Media/master/Images/MainLogo/256x256/nuget_256.png</PackageIconUrl>
+
+    <RepositoryUrl>https://github.com/loic-sharma/BaGet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+    <LangVersion>7.2</LangVersion>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DebugType>portable</DebugType>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+  <!-- NuGet dependencies shared across projects -->
+  <PropertyGroup>
+    <MicrosoftAspNetCorePackageVersion>3.1.1</MicrosoftAspNetCorePackageVersion>
+    <MicrosoftEntityFrameworkCorePackageVersion>3.1.1</MicrosoftEntityFrameworkCorePackageVersion>
+    <MicrosoftExtensionsPackageVersion>3.1.1</MicrosoftExtensionsPackageVersion>
+    <NuGetPackageVersion>5.4.0</NuGetPackageVersion>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0-preview.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(CI)' == 'true' AND '$(DOTNET_RUNNING_IN_CONTAINER)' == ''">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+  </ItemGroup>
+
+</Project>
