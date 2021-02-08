@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup>
+    <Company></Company>
+    <Authors>Florian Grimm</Authors>
+    <Product>Baget</Product>
+    <Title>Baget</Title>
+    <Copyright>Copyright © 2020</Copyright>
+    <RootDirectory>$(MSBuildThisFileDirectory)</RootDirectory>
+    <BaseIntermediateOutputPath>$(RootDirectory)output\$(MSBuildProjectName)\obj\$(PlatformName)</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(RootDirectory)output\$(MSBuildProjectName)\bin\$(PlatformName)</BaseOutputPath>
+  </PropertyGroup>
+</Project>
